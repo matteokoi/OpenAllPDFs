@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>PDF Link Opener</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>PDF Finder</h1>
+        <p class="subtitle">Extract and manage documents with precision.</p>
+        <div class="input-group">
+            <input type="text" id="urlInput" placeholder="Enter URL (e.g. https://example.com/docs)">
+            <button id="loadBtn">Load Page</button>
+        </div>
+
+        <div id="status" class="status"></div>
+
+        <div class="webview-container">
+            <webview id="targetWebview" src="about:blank" style="display:none;"></webview>
+        </div>
+
+        <div id="results" class="results" style="display:none;">
+            <h3>Found <span id="count">0</span> PDFs</h3>
+            <div class="actions">
+                <button id="openGallBtn" class="primary">Open Gallery View</button>
+                <button id="openAllBtn" class="primary">Open All (New Windows)</button>
+                <button id="downloadAllBtn" class="primary download-btn">Download All PDFs</button>
+            </div>
+            <ul id="pdfList"></ul>
+        </div>
+
+        <div id="gallerySection" class="gallery-section" style="display:none;">
+            <div class="viewer-header">
+                <button id="backFromGallBtn" class="secondary">Back to List</button>
+                <h3>PDF Gallery</h3>
+            </div>
+            <div id="galleryGrid" class="gallery-grid"></div>
+        </div>
+
+        <div id="viewerSection" class="viewer-section" style="display:none;">
+            <div class="viewer-header">
+                <button id="backBtn" class="secondary">Back to List</button>
+                <span id="viewerTitle"></span>
+            </div>
+            <webview id="pdfViewer" src="about:blank" style="width:100%; height:600px;" plugins></webview>
+        </div>
+    </div>
+    <script src="renderer.js"></script>
+</body>
+
+</html>
