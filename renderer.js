@@ -13,7 +13,6 @@ const viewerSection = document.getElementById('viewerSection');
 const pdfViewer = document.getElementById('pdfViewer');
 const backBtn = document.getElementById('backBtn');
 const viewerTitle = document.getElementById('viewerTitle');
-
 const gallerySection = document.getElementById('gallerySection');
 const galleryGrid = document.getElementById('galleryGrid');
 const backFromGallBtn = document.getElementById('backFromGallBtn');
