@@ -20,6 +20,7 @@ const backFromGallBtn = document.getElementById('backFromGallBtn');
 
 let foundUrls = [];
 let isUserInitiated = false;
+let currentSourceView = 'results'; // Tracks where we came from: 'results' or 'gallerySection'
 
 loadBtn.onclick = () => {
     let url = urlInput.value.trim();
@@ -42,7 +43,7 @@ loadBtn.onclick = () => {
 
 backBtn.onclick = () => {
     viewerSection.style.display = 'none';
-    results.style.display = 'block';
+    document.getElementById(currentSourceView).style.display = 'block';
     pdfViewer.src = 'about:blank';
 };
 
@@ -80,6 +81,8 @@ function showGallery() {
         openBtn.className = 'secondary';
         openBtn.textContent = 'Preview';
         openBtn.onclick = () => {
+            currentSourceView = 'gallerySection';
+            backBtn.textContent = 'Back to Gallery';
             gallerySection.style.display = 'none';
             viewerSection.style.display = 'block';
             viewerTitle.textContent = header.textContent;
@@ -160,6 +163,8 @@ targetWebview.addEventListener('did-finish-load', async () => {
                 previewBtn.className = 'fa-solid fa-eye icon-btn view';
                 previewBtn.title = 'Preview In-App';
                 previewBtn.onclick = () => {
+                    currentSourceView = 'results';
+                    backBtn.textContent = 'Back to List';
                     results.style.display = 'none';
                     viewerSection.style.display = 'block';
                     viewerTitle.textContent = nameSpan.textContent;
